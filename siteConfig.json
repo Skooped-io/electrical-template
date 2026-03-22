@@ -1,0 +1,158 @@
+{
+  "businessName": "Volt Electric",
+  "phone": "(555) 123-4567",
+  "phoneRaw": "5551234567",
+  "emergencyPhone": "(555) 123-4568",
+  "emergencyPhoneRaw": "5551234568",
+  "email": "info@voltelectric.com",
+  "address": {
+    "street": "1234 Circuit Drive",
+    "city": "Austin",
+    "state": "TX",
+    "zip": "78701",
+    "full": "1234 Circuit Drive, Austin, TX 78701"
+  },
+  "serviceArea": "Austin and surrounding areas",
+  "industry": "Electrical",
+  "yearEstablished": "2008",
+  "licenseNumber": "EC-2847591",
+  "ownerName": "Michael Reeves",
+  "ownerTitle": "Master Electrician",
+  "ownerRole": "Founder & Owner",
+  "about": "Volt Electric was started in 2008 by Michael Reeves, a master electrician with over 25 years of experience. After working for large commercial firms, Michael set out to build a company where every job — no matter how small — gets the same attention to safety and code compliance.",
+  "ownerBio": "Michael holds a Master Electrician license in the state of Texas, NFPA certifications, and is a Generac authorized service dealer. He personally oversees every project and ensures it meets the highest standards of safety and craftsmanship.",
+  "hours": "Mon–Fri 7AM–6PM, Sat 8AM–2PM",
+  "tagline": "Licensed master electricians providing safe, code-compliant electrical services for homes and businesses.",
+  "certifications": [
+    "State Licensed EC-2847591",
+    "NFPA Certified",
+    "Bonded & Insured",
+    "Generac Authorized",
+    "Tesla Certified Installer"
+  ],
+  "services": [
+    {
+      "title": "Panel Upgrades",
+      "shortDesc": "100 to 200 amp upgrades for modern power demands",
+      "desc": "Older homes often have 60 or 100 amp panels that can't keep up with modern appliances, EV chargers, and HVAC systems. We upgrade to 200 amp service safely and to code.",
+      "icon": "Zap",
+      "details": ["Upgrade from 100A to 200A service", "Replace Federal Pacific & Zinsco panels", "Add sub-panels for workshops or additions", "Whole-home surge protection"],
+      "formLabel": "Panel Upgrade"
+    },
+    {
+      "title": "Wiring & Rewiring",
+      "shortDesc": "New construction and old home rewiring",
+      "desc": "Aluminum wiring, knob-and-tube, and degraded insulation are fire hazards. We bring your home's wiring up to current NEC standards.",
+      "icon": "Wrench",
+      "details": ["Old home rewiring (knob-and-tube, aluminum)", "New construction rough-in and finish", "Dedicated circuits for appliances", "GFCI and AFCI protection upgrades"],
+      "formLabel": "Wiring / Rewiring"
+    },
+    {
+      "title": "Lighting Installation",
+      "shortDesc": "Recessed, landscape, LED & smart lighting",
+      "desc": "From recessed can lights to landscape lighting, we design and install lighting that transforms your space.",
+      "icon": "Lightbulb",
+      "details": ["Recessed / can light installation", "Under-cabinet & accent lighting", "Landscape & outdoor lighting", "LED conversion & smart lighting"],
+      "formLabel": "Lighting Installation"
+    },
+    {
+      "title": "EV Charger Installation",
+      "shortDesc": "Level 2 home & commercial charging stations",
+      "desc": "Level 2 home charging is the most cost-effective way to charge. We install all major brands with proper permits.",
+      "icon": "BatteryCharging",
+      "details": ["Tesla, ChargePoint, JuiceBox compatible", "Dedicated 240V circuit installation", "Load calculations & panel assessment", "Full permit and inspection handling"],
+      "formLabel": "EV Charger Install"
+    },
+    {
+      "title": "Generator Installation",
+      "shortDesc": "Whole-house standby generators",
+      "desc": "Whole-house standby generators provide automatic backup power during outages. We're authorized dealers for Generac and Kohler.",
+      "icon": "Shield",
+      "details": ["Generac & Kohler whole-house systems", "Automatic transfer switch installation", "Natural gas & propane connections", "Maintenance plans available"],
+      "formLabel": "Generator Installation"
+    },
+    {
+      "title": "Smart Home Wiring",
+      "shortDesc": "Automation-ready wiring & smart switches",
+      "desc": "Future-proof your home with structured wiring for smart switches, hubs, and whole-home automation systems.",
+      "icon": "Home",
+      "details": ["Smart switch & dimmer installation", "Structured wiring for home automation", "Wi-Fi access point wiring", "Whole-home audio pre-wiring"],
+      "formLabel": "Smart Home Wiring"
+    },
+    {
+      "title": "Commercial Electrical",
+      "shortDesc": "Tenant improvements & maintenance contracts",
+      "desc": "Tenant improvements, code compliance upgrades, and preventive maintenance for commercial properties.",
+      "icon": "Building2",
+      "details": ["Tenant improvement buildouts", "Emergency & exit lighting systems", "Code violation remediation", "Preventive maintenance contracts"],
+      "formLabel": "Commercial Electrical"
+    },
+    {
+      "title": "Emergency Service",
+      "shortDesc": "24/7 response for electrical emergencies",
+      "desc": "Electrical emergencies don't wait — neither do we. 24/7 availability with rapid response times.",
+      "icon": "AlertTriangle",
+      "details": ["24/7 emergency availability", "30-minute average response time", "Sparking outlets & burning smells", "Power outage diagnosis & restoration"],
+      "formLabel": "Emergency Service"
+    }
+  ],
+  "residentialServices": [
+    "Panel upgrades & rewiring",
+    "Lighting design & installation",
+    "EV charger & generator install",
+    "Smart home automation wiring",
+    "Ceiling fan installation",
+    "Code compliance updates"
+  ],
+  "commercialServices": [
+    "Tenant improvement buildouts",
+    "Lighting retrofits & LED upgrades",
+    "Emergency & exit lighting",
+    "Data & low-voltage wiring",
+    "Preventive maintenance contracts",
+    "Code violation remediation"
+  ],
+  "reviews": [
+    { "name": "Margaret T.", "text": "They upgraded our 60-year-old panel and rewired the kitchen. Everything passed inspection the first time. True professionals who care about safety.", "rating": 5 },
+    { "name": "David K.", "text": "Called them for an emergency at 11 PM — a sparking outlet. They were here in 30 minutes. Can't recommend enough for their response time.", "rating": 5 },
+    { "name": "Rachel & Tom S.", "text": "Had our EV charger installed in the garage. They handled the permit, the install, and the inspection. Seamless from start to finish.", "rating": 5 }
+  ],
+  "projects": [
+    { "title": "200A Panel Upgrade — Mueller Neighborhood", "category": "Residential", "scope": "Replaced aging 100A Federal Pacific panel with 200A Square D. Added whole-home surge protection.", "location": "Austin, TX" },
+    { "title": "Tesla Wall Connector — South Lamar Townhome", "category": "EV/Generator", "scope": "Installed dedicated 60A circuit and Tesla Wall Connector. Coordinated with HOA for exterior routing.", "location": "Austin, TX" },
+    { "title": "LED Retrofit — Downtown Office Complex", "category": "Commercial", "scope": "Replaced 200+ fluorescent fixtures with LED panels. Reduced energy consumption by 62%.", "location": "Austin, TX" },
+    { "title": "Whole-House Generac — Lakeway Estate", "category": "EV/Generator", "scope": "Installed Generac 22kW standby generator with 200A transfer switch. Natural gas connection.", "location": "Lakeway, TX" },
+    { "title": "Smart Lighting — Modern Farmhouse Build", "category": "Lighting", "scope": "Designed and installed 47 recessed lights, Lutron Caseta smart switches, and landscape lighting.", "location": "Dripping Springs, TX" },
+    { "title": "Tenant Improvement — East 6th Restaurant", "category": "Commercial", "scope": "Full electrical buildout including commercial kitchen circuits, POS wiring, and decorative lighting.", "location": "Austin, TX" }
+  ],
+  "seo": {
+    "home": {
+      "title": "Volt Electric | Licensed Electrician in Austin, TX",
+      "description": "Licensed electrical contractor in Austin. Panel upgrades, wiring, EV chargers, generators & emergency service. Code-compliant work. Free quotes. Call (555) 123-4567.",
+      "h1": "Licensed. Trusted. Electricians That Get It Right."
+    },
+    "about": {
+      "title": "About Volt Electric | Austin, TX",
+      "description": "Founded by master electrician Michael Reeves in 2008. Licensed, bonded, and insured electrical services for Austin homes and businesses."
+    },
+    "services": {
+      "title": "Electrical Services | Volt Electric",
+      "description": "Panel upgrades, wiring, EV chargers, generators, lighting, smart home wiring, and commercial electrical services in Austin, TX."
+    },
+    "projects": {
+      "title": "Our Projects | Volt Electric",
+      "description": "Real electrical projects in Austin — panel upgrades, EV charger installs, commercial buildouts, and more. All permitted and code-compliant."
+    },
+    "safety": {
+      "title": "Electrical Safety Resources | Volt Electric",
+      "description": "Electrical safety tips, wiring warning signs, and power outage guidance from licensed Austin electricians."
+    },
+    "contact": {
+      "title": "Contact Volt Electric | Austin, TX",
+      "description": "Get a free quote for electrical work in Austin. Call (555) 123-4567 or submit a request online. 24/7 emergency service available."
+    }
+  },
+  "branding": {
+    "primaryColor": "hsl(43, 96%, 56%)"
+  }
+}
