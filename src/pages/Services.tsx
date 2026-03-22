@@ -3,7 +3,7 @@ import Layout from "@/components/Layout";
 import SeoHead from "@/components/SeoHead";
 import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
-import { siteConfig } from "@/lib/config";
+import { siteConfig, slugify } from "@/lib/config";
 import {
   Zap, Wrench, Lightbulb, BatteryCharging, Shield, Home, Building2,
   AlertTriangle, ChevronRight
