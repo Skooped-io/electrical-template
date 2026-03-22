@@ -3,7 +3,7 @@ import Layout from "@/components/Layout";
 import SeoHead from "@/components/SeoHead";
 import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
-import { siteConfig } from "@/lib/config";
+import { siteConfig, slugify } from "@/lib/config";
 import {
   Zap, Wrench, Lightbulb, BatteryCharging, Shield, Home, Building2,
   AlertTriangle, ChevronRight
@@ -38,7 +38,7 @@ export default function Services() {
               const Icon = iconMap[s.icon] || Zap;
               return (
                 <Section key={s.title} delay={i * 60}>
-                  <div className="p-8 rounded-xl border bg-card shadow-sm">
+                  <Link to={`/services/${slugify(s.title)}`} className="block p-8 rounded-xl border bg-card shadow-sm hover:shadow-md hover:border-primary/30 transition-all duration-300">
                     <div className="flex flex-col md:flex-row md:items-start gap-6">
                       <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
                         <Icon className="w-6 h-6 text-primary" />
@@ -54,12 +54,12 @@ export default function Services() {
                             </li>
                           ))}
                         </ul>
-                        <Button variant="hero" size="default" asChild>
-                          <Link to="/contact">Get a Quote <ChevronRight className="w-4 h-4" /></Link>
-                        </Button>
+                        <span className="inline-flex items-center gap-1 text-sm font-semibold text-primary">
+                          Learn More <ChevronRight className="w-4 h-4" />
+                        </span>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 </Section>
               );
             })}

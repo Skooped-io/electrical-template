@@ -5,6 +5,14 @@ const CLIENT_ID = import.meta.env.VITE_CLIENT_ID;
 
 export const siteConfig = staticConfig;
 
+export function slugify(text: string): string {
+  return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
+
+export function getServiceBySlug(slug: string) {
+  return siteConfig.services.find(s => slugify(s.title) === slug);
+}
+
 export async function loadDynamicConfig() {
   if (!API_URL || !CLIENT_ID) return null;
   try {
