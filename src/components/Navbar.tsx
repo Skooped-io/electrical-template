@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Zap, Phone } from "lucide-react";
+import { siteConfig } from "@/lib/config";
 
 const navLinks = [
   { label: "Home", to: "/" },
@@ -23,7 +24,7 @@ export default function Navbar() {
         <span className="inline-flex items-center gap-1.5">
           <Zap className="w-4 h-4" />
           Licensed &amp; Insured Electricians — Call{" "}
-          <a href="tel:5551234567" className="underline font-semibold">(555) 123-4567</a>{" "}
+          <a href={`tel:${siteConfig.phoneRaw}`} className="underline font-semibold">{siteConfig.phone}</a>{" "}
           for Safe, Code-Compliant Work
         </span>
       </div>
@@ -32,7 +33,7 @@ export default function Navbar() {
         <div className="container flex items-center justify-between h-16">
           <Link to="/" className="flex items-center gap-2 font-heading text-xl font-bold tracking-tight">
             <Zap className="w-6 h-6 text-primary" />
-            Volt Electric
+            {siteConfig.businessName}
           </Link>
 
           {/* Desktop nav */}
@@ -53,9 +54,9 @@ export default function Navbar() {
           </nav>
 
           <div className="hidden lg:flex items-center gap-3">
-            <a href="tel:5551234567" className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+            <a href={`tel:${siteConfig.phoneRaw}`} className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
               <Phone className="w-4 h-4" />
-              (555) 123-4567
+              {siteConfig.phone}
             </a>
             <Button variant="hero" size="default" asChild>
               <Link to="/contact">Get a Free Quote</Link>
@@ -91,8 +92,8 @@ export default function Navbar() {
                 </Link>
               ))}
               <div className="flex flex-col gap-2 mt-3 px-3">
-                <a href="tel:5551234567" className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground">
-                  <Phone className="w-4 h-4" /> (555) 123-4567
+                <a href={`tel:${siteConfig.phoneRaw}`} className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground">
+                  <Phone className="w-4 h-4" /> {siteConfig.phone}
                 </a>
                 <Button variant="hero" asChild>
                   <Link to="/contact" onClick={() => setOpen(false)}>Get a Free Quote</Link>

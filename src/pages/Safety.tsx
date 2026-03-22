@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import SeoHead from "@/components/SeoHead";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { BookOpen, AlertTriangle, Zap, BatteryCharging, ChevronRight } from "lucide-react";
 
@@ -68,6 +69,7 @@ const articles = [
 export default function Safety() {
   return (
     <Layout>
+      <SeoHead page="safety" />
       <section className="py-20 lg:py-28">
         <div className="container max-w-4xl">
           <Section>

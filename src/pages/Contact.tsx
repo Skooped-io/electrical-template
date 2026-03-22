@@ -1,7 +1,9 @@
 import { useState } from "react";
 import Layout from "@/components/Layout";
+import SeoHead from "@/components/SeoHead";
 import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import { siteConfig } from "@/lib/config";
 import { Phone, Mail, MapPin, Clock, Shield, Zap, Send } from "lucide-react";
 
 function Section({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
@@ -25,6 +27,7 @@ export default function Contact() {
 
   return (
     <Layout>
+      <SeoHead page="contact" />
       <section className="py-20 lg:py-28">
         <div className="container">
           <Section>
@@ -78,7 +81,7 @@ export default function Contact() {
                     value={formData.address}
                     onChange={(e) => setFormData({ ...formData, address: e.target.value })}
                     className="w-full h-10 px-3 rounded-lg border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-ring"
-                    placeholder="123 Main St, Austin TX"
+                    placeholder={`123 Main St, ${siteConfig.address.city} ${siteConfig.address.state}`}
                   />
                 </div>
 
@@ -91,14 +94,9 @@ export default function Contact() {
                       className="w-full h-10 px-3 rounded-lg border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-ring"
                     >
                       <option value="">Select a service</option>
-                      <option>Panel Upgrade</option>
-                      <option>Wiring / Rewiring</option>
-                      <option>Lighting Installation</option>
-                      <option>EV Charger Install</option>
-                      <option>Generator Installation</option>
-                      <option>Smart Home Wiring</option>
-                      <option>Commercial Electrical</option>
-                      <option>Emergency Service</option>
+                      {siteConfig.services.map((s) => (
+                        <option key={s.formLabel} value={s.formLabel}>{s.formLabel}</option>
+                      ))}
                       <option>Other</option>
                     </select>
                   </div>
@@ -156,11 +154,11 @@ export default function Contact() {
                 <div className="p-6 rounded-xl border bg-card shadow-sm space-y-5">
                   <h3 className="font-heading font-semibold text-lg">Contact Information</h3>
                   {[
-                    { icon: Phone, label: "(555) 123-4567", sub: "Main Line", href: "tel:5551234567" },
-                    { icon: Phone, label: "(555) 123-4568", sub: "Emergency Line (24/7)", href: "tel:5551234568" },
-                    { icon: Mail, label: "info@voltelectric.com", href: "mailto:info@voltelectric.com" },
-                    { icon: Clock, label: "Mon–Fri 7AM–6PM, Sat 8AM–2PM" },
-                    { icon: MapPin, label: "1234 Circuit Drive, Austin, TX 78701" },
+                    { icon: Phone, label: siteConfig.phone, sub: "Main Line", href: `tel:${siteConfig.phoneRaw}` },
+                    { icon: Phone, label: siteConfig.emergencyPhone, sub: "Emergency Line (24/7)", href: `tel:${siteConfig.emergencyPhoneRaw}` },
+                    { icon: Mail, label: siteConfig.email, href: `mailto:${siteConfig.email}` },
+                    { icon: Clock, label: siteConfig.hours },
+                    { icon: MapPin, label: siteConfig.address.full },
                   ].map((item, i) => (
                     <div key={i} className="flex items-start gap-3">
                       <item.icon className="w-4 h-4 text-primary shrink-0 mt-1" />
@@ -179,7 +177,7 @@ export default function Contact() {
                 <div className="p-6 rounded-xl border bg-card shadow-sm">
                   <div className="flex items-center gap-2 mb-2">
                     <Shield className="w-4 h-4 text-primary" />
-                    <span className="text-sm font-semibold">License #EC-2847591</span>
+                    <span className="text-sm font-semibold">License #{siteConfig.licenseNumber}</span>
                   </div>
                   <p className="text-xs text-muted-foreground">All work performed to NEC code standards. Licensed, bonded, and insured.</p>
                 </div>

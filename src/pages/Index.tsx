@@ -2,11 +2,15 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import Layout from "@/components/Layout";
+import SeoHead, { LocalBusinessJsonLd } from "@/components/SeoHead";
+import { siteConfig, getImage } from "@/lib/config";
 import heroImg from "@/assets/hero-electrician.jpg";
 import {
   Zap, Lightbulb, BatteryCharging, Shield, Home, Building2, Wrench,
   AlertTriangle, Star, ChevronRight, Phone, CheckCircle2
 } from "lucide-react";
+
+const iconMap: Record<string, any> = { Zap, Wrench, Lightbulb, BatteryCharging, Shield, Home, Building2, AlertTriangle };
 
 function Section({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const { ref, isVisible } = useScrollReveal();
@@ -21,28 +25,14 @@ function Section({ children, className = "", delay = 0 }: { children: React.Reac
   );
 }
 
-const services = [
-  { icon: Zap, title: "Panel Upgrades", desc: "100 to 200 amp upgrades for modern power demands" },
-  { icon: Wrench, title: "Wiring & Rewiring", desc: "New construction and old home rewiring" },
-  { icon: Lightbulb, title: "Lighting Installation", desc: "Recessed, landscape, LED & smart lighting" },
-  { icon: BatteryCharging, title: "EV Charger Install", desc: "Level 2 home & commercial charging stations" },
-  { icon: Shield, title: "Generator Installation", desc: "Whole-house standby generators" },
-  { icon: Home, title: "Smart Home Wiring", desc: "Automation-ready wiring & smart switches" },
-  { icon: Building2, title: "Commercial Electrical", desc: "Tenant improvements & maintenance contracts" },
-  { icon: AlertTriangle, title: "Emergency Service", desc: "24/7 response for electrical emergencies" },
-];
-
-const reviews = [
-  { name: "Margaret T.", text: "They upgraded our 60-year-old panel and rewired the kitchen. Everything passed inspection the first time. True professionals who care about safety.", rating: 5 },
-  { name: "David K.", text: "Called them for an emergency at 11 PM — a sparking outlet. They were here in 30 minutes. Can't recommend enough for their response time.", rating: 5 },
-  { name: "Rachel & Tom S.", text: "Had our EV charger installed in the garage. They handled the permit, the install, and the inspection. Seamless from start to finish.", rating: 5 },
-];
-
 export default function Index() {
   const heroReveal = useScrollReveal();
 
   return (
     <Layout>
+      <SeoHead page="home" />
+      <LocalBusinessJsonLd />
+
       {/* Hero */}
       <section className="relative overflow-hidden bg-card">
         <div className="container py-16 lg:py-24">
@@ -56,24 +46,29 @@ export default function Index() {
                 Licensed · Bonded · Insured
               </div>
               <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-balance leading-[1.08] mb-6">
-                Licensed. Trusted.{" "}
+                {siteConfig.seo.home.h1.split("Electricians That Get It Right.")[0]}
                 <span className="text-primary">Electricians That Get It Right.</span>
               </h1>
               <p className="text-lg text-muted-foreground text-pretty max-w-lg mb-8 leading-relaxed">
-                Residential and commercial electrical services done safely, to code, every time. Serving Austin and surrounding areas since 2008.
+                Residential and commercial electrical services done safely, to code, every time. Serving {siteConfig.serviceArea} since {siteConfig.yearEstablished}.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button variant="hero" size="lg" asChild>
                   <Link to="/contact">Get a Free Quote <ChevronRight className="w-4 h-4" /></Link>
                 </Button>
                 <Button variant="hero-accent" size="lg" asChild>
-                  <a href="tel:5551234567"><Phone className="w-4 h-4" /> Emergency Service</a>
+                  <a href={`tel:${siteConfig.phoneRaw}`}><Phone className="w-4 h-4" /> Emergency Service</a>
                 </Button>
               </div>
             </div>
             <div className={`${heroReveal.isVisible ? "animate-reveal-right" : "opacity-0"}`} style={{ animationDelay: "150ms" }}>
               <div className="relative rounded-xl overflow-hidden shadow-2xl">
-                <img src={heroImg} alt="Licensed electrician working on a modern electrical panel" className="w-full h-auto object-cover aspect-[4/3]" />
+                <img
+                  src={getImage(null, 'hero', heroImg)}
+                  alt={`${siteConfig.businessName} - Licensed electrician working on a modern electrical panel`}
+                  className="w-full h-auto object-cover aspect-[4/3]"
+                  data-image-slot="hero"
+                />
                 <div className="absolute bottom-4 left-4 right-4 bg-card/90 backdrop-blur-sm rounded-lg p-4 flex items-center gap-4">
                   <div className="flex -space-x-1">
                     {[...Array(5)].map((_, i) => (
@@ -98,20 +93,23 @@ export default function Index() {
             </div>
           </Section>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {services.map((s, i) => (
-              <Section key={s.title} delay={i * 80}>
-                <Link
-                  to="/services"
-                  className="group flex flex-col p-6 rounded-xl bg-card border shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
-                >
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                    <s.icon className="w-5 h-5 text-primary" />
-                  </div>
-                  <h3 className="font-heading font-semibold mb-1">{s.title}</h3>
-                  <p className="text-sm text-muted-foreground text-pretty">{s.desc}</p>
-                </Link>
-              </Section>
-            ))}
+            {siteConfig.services.map((s, i) => {
+              const Icon = iconMap[s.icon] || Zap;
+              return (
+                <Section key={s.title} delay={i * 80}>
+                  <Link
+                    to="/services"
+                    className="group flex flex-col p-6 rounded-xl bg-card border shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
+                  >
+                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                      <Icon className="w-5 h-5 text-primary" />
+                    </div>
+                    <h3 className="font-heading font-semibold mb-1">{s.title}</h3>
+                    <p className="text-sm text-muted-foreground text-pretty">{s.shortDesc}</p>
+                  </Link>
+                </Section>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -160,16 +158,8 @@ export default function Index() {
           </Section>
           <div className="grid md:grid-cols-2 gap-6">
             {[
-              {
-                title: "Residential",
-                icon: Home,
-                items: ["Panel upgrades & rewiring", "Lighting design & installation", "EV charger & generator install", "Smart home automation wiring", "Ceiling fan installation", "Code compliance updates"],
-              },
-              {
-                title: "Commercial",
-                icon: Building2,
-                items: ["Tenant improvement buildouts", "Lighting retrofits & LED upgrades", "Emergency & exit lighting", "Data & low-voltage wiring", "Preventive maintenance contracts", "Code violation remediation"],
-              },
+              { title: "Residential", icon: Home, items: siteConfig.residentialServices },
+              { title: "Commercial", icon: Building2, items: siteConfig.commercialServices },
             ].map((card, i) => (
               <Section key={card.title} delay={i * 120}>
                 <div className="p-8 rounded-xl border bg-card shadow-sm">
@@ -199,7 +189,7 @@ export default function Index() {
         <div className="container">
           <Section>
             <div className="flex flex-wrap items-center justify-center gap-8 text-muted-foreground">
-              {["State Licensed EC-2847591", "NFPA Certified", "Bonded & Insured", "Generac Authorized", "Tesla Certified Installer"].map((cert) => (
+              {siteConfig.certifications.map((cert) => (
                 <div key={cert} className="flex items-center gap-2 text-sm font-medium">
                   <Shield className="w-4 h-4 text-primary" />
                   {cert}
@@ -220,7 +210,7 @@ export default function Index() {
             </div>
           </Section>
           <div className="grid md:grid-cols-3 gap-6">
-            {reviews.map((r, i) => (
+            {siteConfig.reviews.map((r, i) => (
               <Section key={r.name} delay={i * 100}>
                 <div className="p-6 rounded-xl border bg-card shadow-sm h-full flex flex-col">
                   <div className="flex gap-0.5 mb-4">
@@ -248,7 +238,7 @@ export default function Index() {
                 <Link to="/contact">Get a Free Quote <ChevronRight className="w-4 h-4" /></Link>
               </Button>
               <Button variant="hero-accent" size="lg" asChild>
-                <a href="tel:5551234567"><Phone className="w-4 h-4" /> (555) 123-4567</a>
+                <a href={`tel:${siteConfig.phoneRaw}`}><Phone className="w-4 h-4" /> {siteConfig.phone}</a>
               </Button>
             </div>
           </Section>

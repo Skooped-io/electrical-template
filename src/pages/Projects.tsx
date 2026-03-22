@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Layout from "@/components/Layout";
+import SeoHead from "@/components/SeoHead";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import { siteConfig } from "@/lib/config";
 import { MapPin, Zap } from "lucide-react";
 
 function Section({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
@@ -14,21 +16,14 @@ function Section({ children, className = "", delay = 0 }: { children: React.Reac
 
 const categories = ["All", "Residential", "Commercial", "EV/Generator", "Lighting"];
 
-const projects = [
-  { title: "200A Panel Upgrade — Mueller Neighborhood", category: "Residential", scope: "Replaced aging 100A Federal Pacific panel with 200A Square D. Added whole-home surge protection.", location: "Austin, TX" },
-  { title: "Tesla Wall Connector — South Lamar Townhome", category: "EV/Generator", scope: "Installed dedicated 60A circuit and Tesla Wall Connector. Coordinated with HOA for exterior routing.", location: "Austin, TX" },
-  { title: "LED Retrofit — Downtown Office Complex", category: "Commercial", scope: "Replaced 200+ fluorescent fixtures with LED panels. Reduced energy consumption by 62%.", location: "Austin, TX" },
-  { title: "Whole-House Generac — Lakeway Estate", category: "EV/Generator", scope: "Installed Generac 22kW standby generator with 200A transfer switch. Natural gas connection.", location: "Lakeway, TX" },
-  { title: "Smart Lighting — Modern Farmhouse Build", category: "Lighting", scope: "Designed and installed 47 recessed lights, Lutron Caseta smart switches, and landscape lighting.", location: "Dripping Springs, TX" },
-  { title: "Tenant Improvement — East 6th Restaurant", category: "Commercial", scope: "Full electrical buildout including commercial kitchen circuits, POS wiring, and decorative lighting.", location: "Austin, TX" },
-];
-
 export default function Projects() {
   const [filter, setFilter] = useState("All");
+  const projects = siteConfig.projects;
   const filtered = filter === "All" ? projects : projects.filter((p) => p.category === filter);
 
   return (
     <Layout>
+      <SeoHead page="projects" />
       <section className="py-20 lg:py-28">
         <div className="container">
           <Section>
