@@ -54,12 +54,12 @@ export default function Services() {
                             </li>
                           ))}
                         </ul>
-                        <Button variant="hero" size="default" asChild>
-                          <Link to="/contact">Get a Quote <ChevronRight className="w-4 h-4" /></Link>
-                        </Button>
+                        <span className="inline-flex items-center gap-1 text-sm font-semibold text-primary">
+                          Learn More <ChevronRight className="w-4 h-4" />
+                        </span>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 </Section>
               );
             })}
