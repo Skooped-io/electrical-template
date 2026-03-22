@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Zap, Phone, Mail, MapPin, Shield } from "lucide-react";
+import { siteConfig } from "@/lib/config";
 
 export default function Footer() {
   return (
@@ -10,14 +11,14 @@ export default function Footer() {
           <div className="space-y-4">
             <Link to="/" className="flex items-center gap-2 font-heading text-xl font-bold">
               <Zap className="w-6 h-6 text-primary" />
-              Volt Electric
+              {siteConfig.businessName}
             </Link>
             <p className="text-sm text-secondary-foreground/70 text-pretty leading-relaxed">
-              Licensed master electricians providing safe, code-compliant electrical services for homes and businesses.
+              {siteConfig.tagline}
             </p>
             <div className="flex items-center gap-2 text-xs text-secondary-foreground/50">
               <Shield className="w-4 h-4" />
-              License #EC-2847591
+              License #{siteConfig.licenseNumber}
             </div>
           </div>
 
@@ -25,8 +26,8 @@ export default function Footer() {
           <div className="space-y-4">
             <h4 className="font-heading font-semibold text-sm tracking-wide uppercase text-secondary-foreground/60">Services</h4>
             <nav className="flex flex-col gap-2">
-              {["Panel Upgrades", "Wiring & Rewiring", "Lighting Installation", "EV Charger Install", "Generator Installation", "Smart Home Wiring", "Commercial Electrical", "Emergency Service"].map((s) => (
-                <Link key={s} to="/services" className="text-sm text-secondary-foreground/70 hover:text-primary transition-colors">{s}</Link>
+              {siteConfig.services.map((s) => (
+                <Link key={s.title} to="/services" className="text-sm text-secondary-foreground/70 hover:text-primary transition-colors">{s.title}</Link>
               ))}
             </nav>
           </div>
@@ -50,14 +51,14 @@ export default function Footer() {
           <div className="space-y-4">
             <h4 className="font-heading font-semibold text-sm tracking-wide uppercase text-secondary-foreground/60">Contact</h4>
             <div className="space-y-3">
-              <a href="tel:5551234567" className="flex items-center gap-2 text-sm text-secondary-foreground/70 hover:text-primary transition-colors">
-                <Phone className="w-4 h-4 shrink-0" /> (555) 123-4567
+              <a href={`tel:${siteConfig.phoneRaw}`} className="flex items-center gap-2 text-sm text-secondary-foreground/70 hover:text-primary transition-colors">
+                <Phone className="w-4 h-4 shrink-0" /> {siteConfig.phone}
               </a>
-              <a href="mailto:info@voltelectric.com" className="flex items-center gap-2 text-sm text-secondary-foreground/70 hover:text-primary transition-colors">
-                <Mail className="w-4 h-4 shrink-0" /> info@voltelectric.com
+              <a href={`mailto:${siteConfig.email}`} className="flex items-center gap-2 text-sm text-secondary-foreground/70 hover:text-primary transition-colors">
+                <Mail className="w-4 h-4 shrink-0" /> {siteConfig.email}
               </a>
               <div className="flex items-start gap-2 text-sm text-secondary-foreground/70">
-                <MapPin className="w-4 h-4 shrink-0 mt-0.5" /> 1234 Circuit Drive<br />Austin, TX 78701
+                <MapPin className="w-4 h-4 shrink-0 mt-0.5" /> {siteConfig.address.street}<br />{siteConfig.address.city}, {siteConfig.address.state} {siteConfig.address.zip}
               </div>
             </div>
           </div>
@@ -66,8 +67,8 @@ export default function Footer() {
 
       <div className="border-t border-secondary-foreground/10">
         <div className="container py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-secondary-foreground/50">
-          <p>© {new Date().getFullYear()} Volt Electric. All rights reserved.</p>
-          <p>Licensed &amp; Insured · NEC Code Compliant · License #EC-2847591</p>
+          <p>© {new Date().getFullYear()} {siteConfig.businessName}. All rights reserved.</p>
+          <p>Licensed &amp; Insured · NEC Code Compliant · License #{siteConfig.licenseNumber}</p>
         </div>
       </div>
     </footer>

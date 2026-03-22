@@ -1,5 +1,7 @@
 import Layout from "@/components/Layout";
+import SeoHead from "@/components/SeoHead";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import { siteConfig } from "@/lib/config";
 import { Shield, Award, Users, BookOpen, CheckCircle2, Zap } from "lucide-react";
 
 function Section({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
@@ -14,17 +16,18 @@ function Section({ children, className = "", delay = 0 }: { children: React.Reac
 export default function About() {
   return (
     <Layout>
+      <SeoHead page="about" />
       <section className="py-20 lg:py-28">
         <div className="container max-w-4xl">
           <Section>
             <div className="inline-flex items-center gap-2 text-primary text-sm font-semibold mb-4">
-              <Zap className="w-4 h-4" /> About Volt Electric
+              <Zap className="w-4 h-4" /> About {siteConfig.businessName}
             </div>
             <h1 className="font-heading text-4xl md:text-5xl font-bold tracking-tight text-balance mb-6 leading-[1.1]">
-              Founded by a Master Electrician. Built on Safety.
+              Founded by a {siteConfig.ownerTitle}. Built on Safety.
             </h1>
             <p className="text-lg text-muted-foreground text-pretty leading-relaxed mb-8">
-              Volt Electric was started in 2008 by Michael Reeves, a master electrician with over 25 years of experience. After working for large commercial firms, Michael set out to build a company where every job — no matter how small — gets the same attention to safety and code compliance.
+              {siteConfig.about}
             </p>
           </Section>
 
@@ -35,10 +38,10 @@ export default function About() {
                   <Award className="w-7 h-7 text-primary" />
                 </div>
                 <div>
-                  <h2 className="font-heading text-xl font-bold mb-1">Michael Reeves, Master Electrician</h2>
-                  <p className="text-sm text-muted-foreground mb-3">Founder & Owner · License #EC-2847591</p>
+                  <h2 className="font-heading text-xl font-bold mb-1">{siteConfig.ownerName}, {siteConfig.ownerTitle}</h2>
+                  <p className="text-sm text-muted-foreground mb-3">{siteConfig.ownerRole} · License #{siteConfig.licenseNumber}</p>
                   <p className="text-muted-foreground text-pretty leading-relaxed">
-                    Michael holds a Master Electrician license in the state of Texas, NFPA certifications, and is a Generac authorized service dealer. He personally oversees every project and ensures it meets the highest standards of safety and craftsmanship.
+                    {siteConfig.ownerBio}
                   </p>
                 </div>
               </div>
